@@ -90,9 +90,9 @@ JOIN countries co ON ci.countrycode = co.code
 WHERE ci.name LIKE 'Serra%' AND ci.name != 'SSerravalle' AND co.region = 'South America';
 
 -- returns:
---     name  | countrycode
---     -------+-------------
---     Serra | BRA
+    -- name  | countrycode
+    -- -------+-------------
+    -- Serra | BRA
 
 -- https://learn.microsoft.com/en-us/sql/t-sql/language-elements/percent-character-wildcard-character-s-to-match-transact-sql?view=sql-server-ver16
 
@@ -111,6 +111,12 @@ SELECT ci.name FROM cities ci
 JOIN countries co ON ci.countrycode = co.code
 WHERE co.code = 'BRA' AND co.capital = ci.id;
 
+-- returns:
+    -- name
+    -- ----------
+    -- Brasília
+    -- (1 row)
+
 ------------------------------------------------------------------------------------------------------
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the landing dock. Lucky for us, she's getting cocky. She left us a note (below), and I'm sure she thinks she's very clever, but if we can crack it, we can finally put her where she belongs – behind bars.
@@ -125,3 +131,11 @@ WHERE co.code = 'BRA' AND co.capital = ci.id;
 
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
+
+SELECT name FROM cities WHERE population = 91084;
+
+-- returns: 
+    --     name
+    -- --------------
+    -- Santa Monica
+    -- (1 row)
