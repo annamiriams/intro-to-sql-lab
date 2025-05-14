@@ -35,6 +35,28 @@ SELECT cl.language FROM countrylanguages cl JOIN countries c ON cl.countrycode =
 
 -- Write SQL query here
 
+-- join cl.language onto c
+-- select country in southern europe where language spoken = italian
+
+SELECT c.name
+FROM countries c
+JOIN countrylanguages cl ON c.code = cl.countrycode 
+WHERE c.region = 'Southern Europe' AND code != 'VAT'
+GROUP BY c.name
+HAVING COUNT(*) = 1 AND MAX(cl.language) = 'Italian';
+
+-- returns:
+    --     name
+    -- ------------
+    --  San Marino
+
+-- Group by country, count how many languages each country has, and make sure that there is only one row for that county (count = 1), and that the language is Italian
+-- Max or min could be used--it doesn't matter here because there's still only one count
+-- https://www.w3schools.com/sql/sql_min_max.asp
+-- https://www.w3schools.com/sql/sql_groupby.asp
+-- https://www.freecodecamp.org/news/how-to-remove-duplicate-data-in-sql/#:~:text=One%20of%20the%20easiest%20ways,values%20from%20a%20particular%20column.
+-- https://stackoverflow.com/questions/20991729/how-to-avoid-error-aggregate-functions-are-not-allowed-in-where
+
 ------------------------------------------------------------------------------------------------------
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time. There are only two cities she could be flying to in the country. One is named the same as the country – that would be too obvious. We're following our gut on this one; find out what other city in that country she might be flying to.
