@@ -38,11 +38,11 @@ SELECT cl.language FROM countrylanguages cl JOIN countries c ON cl.countrycode =
 -- join cl.language onto c
 -- select country in southern europe where language spoken = italian
 
-SELECT c.name
+SELECT c.name, c.code
 FROM countries c
 JOIN countrylanguages cl ON c.code = cl.countrycode 
 WHERE c.region = 'Southern Europe' AND code != 'VAT'
-GROUP BY c.name
+GROUP BY c.name, c.code
 HAVING COUNT(*) = 1 AND MAX(cl.language) = 'Italian';
 
 -- returns:
@@ -62,6 +62,14 @@ HAVING COUNT(*) = 1 AND MAX(cl.language) = 'Italian';
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time. There are only two cities she could be flying to in the country. One is named the same as the country – that would be too obvious. We're following our gut on this one; find out what other city in that country she might be flying to.
 
 -- Write SQL query here
+
+-- join code from cities on countries
+-- where name != 'San Marino'
+
+SELECT ci.name, ci.countrycode
+FROM cities ci
+JOIN countries co ON ci.countrycode = co.code
+WHERE co.code = 'SMR' AND ci.name != 'San Marino';
 
 ------------------------------------------------------------------------------------------------------
 
