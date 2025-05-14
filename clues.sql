@@ -104,6 +104,13 @@ WHERE ci.name LIKE 'Serra%' AND ci.name != 'SSerravalle' AND co.region = 'South 
 
 -- Write SQL query here
 
+-- join countries code on cities countrycode
+-- id in cities = capital in countries
+
+SELECT ci.name FROM cities ci
+JOIN countries co ON ci.countrycode = co.code
+WHERE co.code = 'BRA' AND co.capital = ci.id;
+
 ------------------------------------------------------------------------------------------------------
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the landing dock. Lucky for us, she's getting cocky. She left us a note (below), and I'm sure she thinks she's very clever, but if we can crack it, we can finally put her where she belongs – behind bars.
