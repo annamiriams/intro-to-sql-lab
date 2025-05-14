@@ -38,12 +38,20 @@ SELECT cl.language FROM countrylanguages cl JOIN countries c ON cl.countrycode =
 -- join cl.language onto c
 -- select country in southern europe where language spoken = italian
 
+-- this took me forever and a day to figure out but I refactored it to be simplier
+-- SELECT c.name, c.code
+-- SELECT c.name, c.code
+-- FROM countries c
+-- JOIN countrylanguages cl ON c.code = cl.countrycode 
+-- WHERE c.region = 'Southern Europe' AND code != 'VAT'
+-- GROUP BY c.name, c.code
+-- HAVING COUNT(*) = 1 AND MAX(cl.language) = 'Italian';
+
+-- refactored query above once I realized percentage was included in cl...
 SELECT c.name, c.code
 FROM countries c
 JOIN countrylanguages cl ON c.code = cl.countrycode 
-WHERE c.region = 'Southern Europe' AND code != 'VAT'
-GROUP BY c.name, c.code
-HAVING COUNT(*) = 1 AND MAX(cl.language) = 'Italian';
+WHERE c.region = 'Southern Europe' AND code != 'VAT' AND cl.percentage = 100;
 
 -- returns:
     --     name
