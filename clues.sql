@@ -71,11 +71,30 @@ FROM cities ci
 JOIN countries co ON ci.countrycode = co.code
 WHERE co.code = 'SMR' AND ci.name != 'San Marino';
 
+-- returns:
+    --     name    | countrycode
+    -- ------------+-------------
+    --  Serravalle | SMR
+
 ------------------------------------------------------------------------------------------------------
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
 -- Write SQL query here
+
+-- join countries region on cities
+
+SELECT ci.name, ci.countrycode 
+FROM cities ci 
+JOIN countries co ON ci.countrycode = co.code
+WHERE ci.name LIKE 'Serra%' AND ci.name != 'SSerravalle' AND co.region = 'South America';
+
+-- returns:
+--     name  | countrycode
+--     -------+-------------
+--     Serra | BRA
+
+-- https://learn.microsoft.com/en-us/sql/t-sql/language-elements/percent-character-wildcard-character-s-to-match-transact-sql?view=sql-server-ver16
 
 ------------------------------------------------------------------------------------------------------
 
