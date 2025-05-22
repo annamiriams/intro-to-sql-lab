@@ -95,7 +95,7 @@ WHERE co.code = 'SMR' AND ci.name != 'San Marino';
 SELECT ci.name, ci.countrycode 
 FROM cities ci 
 JOIN countries co ON ci.countrycode = co.code
-WHERE ci.name LIKE 'Serra%' AND ci.name != 'SSerravalle' AND co.region = 'South America';
+WHERE ci.name LIKE 'Serra%' AND ci.name != 'Serravalle' AND co.region = 'South America';
 
 -- returns:
     -- name  | countrycode
